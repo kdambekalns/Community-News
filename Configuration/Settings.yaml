@@ -1,0 +1,10 @@
+Neos:
+  Neos:
+    nodeTypes:
+      groups:
+        news:
+          position: 280
+          label: 'Community News'
+    fusion:
+      autoInclude:
+        Community.News: TRUE

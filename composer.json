@@ -1,0 +1,18 @@
+{
+    "description": "",
+    "type": "neos-package",
+    "name": "community/news",
+    "require": {
+        "neos/flow": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Community\\News\\": "Classes/"
+        }
+    },
+    "extra": {
+        "neos": {
+            "package-key": "Community.News"
+        }
+    }
+}

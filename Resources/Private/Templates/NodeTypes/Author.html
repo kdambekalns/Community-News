@@ -1,0 +1,32 @@
+<!-- <html xmlns="http://www.w3.org/1999/xhtml" lang="en"
+      xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers"
+      xmlns:neos="http://typo3.org/ns/TYPO3/Neos/ViewHelpers">
+-->
+
+{namespace fusion=Neos\Fusion\ViewHelpers}
+{namespace neos=Neos\Neos\ViewHelpers}
+{namespace media=Neos\Media\ViewHelpers}
+
+<f:section name="authorDetail">
+    <!-- News container for the PrimaryContent, attributes/values can be defined in /Resources/Private/TypoScript/Library/NodeTypes/Author.ts2 -->
+    <div{attributes -> f:format.raw()}>
+
+        <!-- Author Name -->
+        <h1><neos:contentElement.editable property="name" /></h1>
+
+        <!-- Author E-Mail -->
+        <h3><a href="mailto:{email}">{email}</a></h3>
+
+        <!-- Author Image -->
+        <f:if condition="{image}">
+            <media:image class="media-object" alt="{title}" title="{title}" maximumHeight="220" maximumWidth="220" />
+        </f:if>
+
+        <!-- Main Content from content collection - created by the editor with elements needed like images, videos, etc. -->
+        <f:format.raw value="{main}" />
+
+        <f:format.raw value="{newsByAuthor}" />
+    </div>
+</f:section>
+
+</html>

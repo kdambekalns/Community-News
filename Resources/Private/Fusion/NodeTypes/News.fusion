@@ -1,0 +1,38 @@
+
+# The default TS object is created for every node type automatically be Neos,
+# so we just have to add a few things
+prototype(Community.News:News) < prototype(Neos.Neos:Document) {
+  # set the template section to use
+  templatePath = 'resource://Community.News/Private/Templates/NodeTypes/News.html'
+  sectionName = 'newsDetail'
+
+  main = Neos.Neos:ContentCollection{
+      nodePath = 'main'
+  }
+#dpf categories = Neos.TypoScript:Collection {}
+  categories = Neos.Fusion:Collection {
+      collection = ${q(node).property('categories')}
+      itemName = 'node'
+      itemRenderer = Community.News:CategoryShort
+  }
+
+  # Fetch and render all related news
+//    relatedNews = Community.News:AbstractList {
+//        @context.listTitle = 'Related news'
+//        prototype(Flowpack.Listable:Listable) {
+//            @context.paginationEnabled = false
+//            collection = ${q(node).property('related')}
+//        }
+//    }
+
+   @process.editableWrap = Neos.Neos:ContentElementWrapping
+}
+
+# Attach to `PrimaryContent` to render nodes of this time automatically
+prototype(Neos.Neos:PrimaryContent) {
+  news{
+      @position = 'before default'
+      condition = ${q(node).is('[instanceof Community.News:News]')}
+      type = 'Community.News:News'
+  }
+}

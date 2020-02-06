@@ -1,0 +1,11 @@
+prototype(Community.News:NewsLatest) < prototype(Community.News:AbstractList) {
+  templatePath = 'resource://Community.News/Private/Templates/NodeTypes/NewsList.html'
+  #collection = ${q(site).find('[instanceof Community.News:News]').get()}
+  collection = ${q(site).find('[instanceof Community.News:News]').get() }
+  collection.@process.sort = ${q(value).count() > 0 ? q(value).sort('publishDate', 'DESC').slice(0, 3).get() : value}
+  itemsPerPage = 6
+  prototype(Flowpack.Listable:Collection) {
+    listClass = 'MyNewsLatestList'
+    itemClass = 'MyNewsLatestItem'
+  }
+}
