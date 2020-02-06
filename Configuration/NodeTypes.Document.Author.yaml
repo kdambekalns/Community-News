@@ -25,6 +25,7 @@
       type: string
       ui:
         label: 'Author name'
+        inlineEditable: TRUE
         inspector:
           group: general
     email:
