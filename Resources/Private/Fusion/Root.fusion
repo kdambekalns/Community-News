@@ -1,6 +1,0 @@
-include: NodeTypes/*.fusion
-include: TypoScriptObjects/*.fusion
-
-prototype(Neos.Neos:ContentCollection).@cache.entryIdentifier.pagination = ${request.pluginArguments.listable-paginate.currentPage}
-prototype(Neos.Neos:Page).@cache.entryIdentifier.pagination = ${request.pluginArguments.listable-paginate.currentPage}
-root.@cache.entryIdentifier.pagination = ${request.pluginArguments.listable-paginate.currentPage}
