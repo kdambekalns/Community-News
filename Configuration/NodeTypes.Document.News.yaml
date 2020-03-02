@@ -1,3 +1,0 @@
-'Community.News:News':
-  superTypes:
-    'Community.News:AbstractNews': true
