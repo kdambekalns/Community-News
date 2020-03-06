@@ -1,44 +1,30 @@
+prototype(Community.News:News) < prototype(Neos.NodeTypes:Page) {
+    body.content.main = Neos.Fusion:Template {
+        templatePath = 'resource://Community.News/Private/Templates/NodeTypes/News.html'
 
-prototype(Community.News:News) < prototype(Neos.Neos:Document){
-  # set the template section to use
-  templatePath = 'resource://Community.News/Private/Templates/NodeTypes/News.html'
-  sectionName = 'newsDetail'
+        title = ${q(node).property('title')}
+        publishDate = ${q(node).property('publishDate')}
+        teaser = ${q(node).property('teaser')}
+        author = ${q(node).property('author')}
 
-  title = ${q(node).property('title')}
-  publishDate = ${q(node).property('publishDate')}
-  teaser = ${q(node).property('teaser')}
+        main = Neos.Neos:PrimaryContent {
+            nodePath = 'main'
+        }
 
-        // These are your content areas, you can define as many as you want, just name them and define the nodePath.
-  content {
-    main = Neos.Neos:PrimaryContent {
-      nodePath = 'main'
-    }
+        categories = Neos.Fusion:Collection {
+            collection = ${q(node).property('categories')}
+            itemName = 'node'
+            itemRenderer = Community.News:Category.Short
+        }
 
-#dpf categories = Neos.TypoScript:Collection {}
-  categories = Neos.Fusion:Collection {
-      collection = ${q(node).property('categories')}
-      itemName = 'node'
-      itemRenderer = Community.News:CategoryShort
-  }
-
-  # Fetch and render all related news
-    relatedNews = Community.News:AbstractList {
-        @context.listTitle = 'Related news'
-        prototype(Flowpack.Listable:Listable) {
-            @context.paginationEnabled = false
-            collection = ${q(node).property('related')}
+        # Fetch and render all related news
+        relatedNews = Community.News:AbstractList {
+            @context.listTitle = 'Related news'
+            prototype(Flowpack.Listable:PaginatedCollection) {
+                @context.paginationEnabled = false
+                collection = ${q(node).property('related')}
+            }
+            @if.hasRelatedNews = ${q(node).property('related')}
         }
     }
-
-   @process.editableWrap = Neos.Neos:ContentElementWrapping
-
-}
-
-# Attach to `PrimaryContent` to render nodes of this time automatically
-prototype(Neos.Neos:PrimaryContent) {
-  news {
-      @position = 'before default'
-      condition = ${q(node).is('[instanceof Community.News:News]')}
-      type = 'Community.News:News'
-  }
 }

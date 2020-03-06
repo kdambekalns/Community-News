@@ -1,18 +1,14 @@
 {namespace fusion=Neos\Fusion\ViewHelpers}
 {namespace neos=Neos\Neos\ViewHelpers}
-<f:section name="categoryDetail">
 
-    <!-- News container for the PrimaryContent, attributes/values can be defined in /Resources/Private/TypoScript/Library/NodeTypes/Author.ts2 -->
-    <div{attributes -> f:format.raw()}>
+<div{attributes -> f:format.raw()}>
 
-        <!-- Category Name -->
-        <h1><neos:contentElement.editable property="title" /></h1>
+    <!-- Category Name -->
+    <neos:contentElement.wrap>
+        <neos:contentElement.editable property="title" tag="h1"/>
+    </neos:contentElement.wrap>
 
-        <!-- Main Content from content collection - created by the editor with elements needed like images, videos, etc. -->
-        <f:format.raw value="{main}" />
+    {main -> f:format.raw()}
 
-        <f:format.raw value="{newsByCategory}" />
-    </div>
-</f:section>
-
-</html>
+    {newsByCategory -> f:format.raw()}
+</div>
