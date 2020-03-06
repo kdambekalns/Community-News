@@ -1,5 +1,5 @@
 'Community.News:Author':
-  label: '${String.stripTags(q(node).property(''name''))}'
+  label: "${String.stripTags(q(node).property('name'))}"
   superTypes:
     'Neos.Neos:Document': true
     'Neos.NodeTypes:ImageMixin': true
@@ -7,16 +7,16 @@
     nodeTypes:
       '*': false
   ui:
-    label: Author
-    icon: icon-user
-    group: news
+    label: 'Author'
+    icon: 'icon-user'
+    group: 'news'
     inspector:
       groups:
         general:
-          label: General
+          label: 'General'
           position: 15
         related:
-          label: Related
+          label: 'Related'
   childNodes:
     main:
       type: 'Neos.Neos:ContentCollection'
@@ -25,9 +25,8 @@
       type: string
       ui:
         label: 'Author name'
-        inlineEditable: true
         inspector:
-          group: general
+          group: 'general'
     email:
       type: string
       ui:
@@ -47,10 +46,10 @@
             h3: false
             pre: false
             removeFormat: false
-          table: {  }
-          list: {  }
+          table: { }
+          list: { }
           link:
             a: true
-          alignment: {  }
+          alignment: { }
         inspector:
-          group: general
+          group: 'general'

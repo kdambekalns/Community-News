@@ -1,6 +1,4 @@
 
-# The default TS object is created for every node type automatically be Neos,
-# so we just have to add a few things
 prototype(Community.News:News) < prototype(Neos.Neos:Document){
   # set the template section to use
   templatePath = 'resource://Community.News/Private/Templates/NodeTypes/News.html'
@@ -26,7 +24,7 @@ prototype(Community.News:News) < prototype(Neos.Neos:Document){
   # Fetch and render all related news
     relatedNews = Community.News:AbstractList {
         @context.listTitle = 'Related news'
-        prototype(Flowpack.Listable:PaginatedCollection) {
+        prototype(Flowpack.Listable:Listable) {
             @context.paginationEnabled = false
             collection = ${q(node).property('related')}
         }

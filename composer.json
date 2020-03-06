@@ -1,9 +1,10 @@
 {
-    "description": "",
-    "type": "neos-package",
     "name": "community/news",
+    "description": "Base News package built on top of Flowpack.Listable",
+    "type": "neos-package",
     "require": {
-        "neos/flow": "*"
+        "neos/neos": "^4.0",
+        "flowpack/listable": "^3.2"
     },
     "autoload": {
         "psr-4": {

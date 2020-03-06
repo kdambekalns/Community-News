@@ -5,7 +5,7 @@
     label: 'News latest'
     icon: icon-list
     inlineEditable: true
-    group: news
+    group: 'news'
   constraints:
     nodeTypes:
       '*': false

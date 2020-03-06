@@ -1,8 +1,3 @@
-<!-- <html xmlns="http://www.w3.org/1999/xhtml" lang="en"
-      xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers"
-      xmlns:neos="http://typo3.org/ns/TYPO3/Neos/ViewHelpers">
--->
-
 {namespace fusion=Neos\Fusion\ViewHelpers}
 {namespace neos=Neos\Neos\ViewHelpers}
 {namespace media=Neos\Media\ViewHelpers}
@@ -19,10 +14,10 @@
 
         <!-- Author Image -->
         <f:if condition="{image}">
-            <media:image class="media-object" alt="{title}" title="{title}" maximumHeight="220" maximumWidth="220" />
+            <media:image class="media-object" asset="{image}" alt="{title}" title="{title}" maximumHeight="220" maximumWidth="220" />
         </f:if>
 
-        <!--<f:format.raw value="{main}" />Main Content from content collection - created by the editor with elements needed like images, videos, etc. -->
+        <!-- Main Content from content collection - created by the editor with elements needed like images, videos, etc. -->
 
       	{content.main -> f:format.raw()}
 
