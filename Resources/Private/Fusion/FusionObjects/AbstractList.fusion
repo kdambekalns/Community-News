@@ -1,0 +1,5 @@
+prototype(Community.News:AbstractList) < prototype(Flowpack.Listable:PaginatedCollection) {
+    @process.list = Flowpack.Listable:List {
+        listTitle = ${listTitle}
+    }
+}

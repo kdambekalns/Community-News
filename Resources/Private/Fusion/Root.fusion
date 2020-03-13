@@ -1,5 +1,5 @@
 include: NodeTypes/*.fusion
-include: TypoScriptObjects/*.fusion
+include: FusionObjects/*.fusion
 
 prototype(Neos.Neos:ContentCollection).@cache.entryIdentifier.pagination = ${request.pluginArguments.listable-paginate.currentPage}
 prototype(Neos.Neos:Page).@cache.entryIdentifier.pagination = ${request.pluginArguments.listable-paginate.currentPage}

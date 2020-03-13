@@ -4,8 +4,7 @@
   ui:
     label: 'News list'
     icon: icon-list
-    inlineEditable: true
-    group: news
+    group: 'news'
   constraints:
     nodeTypes:
       '*': false

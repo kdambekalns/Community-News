@@ -1,0 +1,5 @@
+prototype(Community.News:Category.Short) < prototype(Neos.Neos:Content) {
+    templatePath = 'resource://Community.News/Private/Templates/NodeTypes/Category.Short.html'
+
+    title = ${q(node).property('title')}
+}

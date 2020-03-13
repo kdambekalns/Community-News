@@ -10,23 +10,23 @@
       type: 'Neos.Neos:ContentCollection'
   ui:
     label: 'News Item'
-    icon: icon-edit
-    group: news
+    icon: 'icon-edit'
+    group: 'news'
     inspector:
       groups:
         general:
-          label: General
+          label: 'General'
           position: 10
         related:
-          label: Related
+          label: 'Related'
   properties:
     publishDate:
       type: DateTime
-      defaultValue: now
+      defaultValue: 'now'
       ui:
         label: 'Creation date'
         inspector:
-          group: general
+          group: 'general'
           position: 5
           editorOptions:
             format: 'd-m-Y H:i'
@@ -37,7 +37,7 @@
       ui:
         label: 'Archive date'
         inspector:
-          group: general
+          group: 'general'
           position: 10
           editorOptions:
             format: 'd-m-Y H:i'
@@ -63,11 +63,11 @@
             h3: false
             pre: false
             removeFormat: false
-          table: {  }
-          list: {  }
+          table: { }
+          list: { }
           link:
             a: true
-          alignment: {  }
+          alignment: { }
     important:
       type: boolean
       ui:
@@ -99,38 +99,36 @@
           list: {  }
           link:
             a: true
-          alignment: {  }
+          alignment: { }
     categories:
       type: references
       ui:
-        label: Categories
+        label: 'Categories'
         inspector:
-          group: related
+          group: 'related'
           editorOptions:
-            nodeTypes:
-              - 'Community.News:Category'
+            nodeTypes: ['Community.News:Category']
     author:
       type: reference
       ui:
-        label: Author
+        label: 'Author'
         inspector:
-          group: related
+          group: 'related'
           editorOptions:
-            nodeTypes:
-              - 'Community.News:Author'
+            nodeTypes: ['Community.News:Author']
+
     related:
       type: references
       ui:
         label: 'Related News'
         inspector:
-          group: related
+          group: 'related'
           editorOptions:
-            nodeTypes:
-              - 'Community.News:AbstractNews'
+            nodeTypes: ['Community.News:AbstractNews']
     tags:
       type: string
       ui:
-        label: Tags
-        reloadIfChanged: false
+        label: 'Tags'
+        reloadIfChanged: FALSE
         inspector:
-          group: related
+          group: 'related'

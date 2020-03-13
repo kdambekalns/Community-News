@@ -6,9 +6,9 @@
       '*': false
       'Community.News:Category': true
   ui:
-    label: Category
-    icon: icon-book
-    group: news
+    label: 'Category'
+    icon: 'icon-book'
+    group: 'news'
   childNodes:
     main:
       type: 'Neos.Neos:ContentCollection'

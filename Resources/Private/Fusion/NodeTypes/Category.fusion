@@ -1,61 +1,21 @@
-# The default TS object is created for every node type automatically by Neos,
-# so we just have to add a few things
-prototype(Community.News:Category) < prototype(Neos.Neos:Document) {
-    # set the template section to use
-    head{
-    metadata = Neos.Fusion:Template {
-      templatePath = 'resource://Community.News/Private/Templates/NodeTypes/Category.html'
-      sectionName = 'metadata'
-      }
-      stylesheets {
-  			site = Neos.Fusion:Template {
-  				templatePath = 'resource://Community.News/Private/Templates/NodeTypes/Category.html'
-  				sectionName = 'stylesheets'
-  				node = ${node}
-  			}
-  		}
-    }
+prototype(Community.News:Category) < prototype(Neos.NodeTypes:Page) {
+    body.content.main = Neos.Fusion:Template {
+        templatePath = 'resource://Community.News/Private/Templates/NodeTypes/Category.html'
 
-    body{
-    templatePath = 'resource://Community.News/Private/Templates/NodeTypes/Category.html'
+        title = ${q(node).property('title')}
 
-    sectionName = 'categoryDetail'
-
-    title = ${q(node).property('title')}
-
-    content.main = Neos.Neos:ContentCollection {
-        nodePath = 'main'
-    }
-}
-    # Fetch and render all news articles that belong to the current category
-    newsByCategory = Community.News:AbstractList {
-        @context.listTitle = 'News with this category'
-        prototype(Flowpack.Listable:PaginatedCollection) {
-            @context.paginationEnabled = false
-            collection = ${q(site).find('[instanceof Community.News:News]').filterByReference('categories', node).get()}
+        main = Neos.Neos:ContentCollection {
+            nodePath = 'main'
         }
-   newsByCategory = Community.News:AbstractList {
-        @context.listTitle = 'News with this category'
-        collection = ${q(site).find('[instanceof Community.News:News]').filterByReference('categories', node).get()}
+
+        # Fetch and render all news articles that belong to the current category
+        newsByCategory = Community.News:AbstractList {
+            @context.listTitle = 'News with this category'
+            prototype(Flowpack.Listable:PaginatedCollection) {
+                @context.paginationEnabled = false
+                collection = ${q(site).find('[instanceof Community.News:AbstractNews]').filterByReference('categories', node).get()}
+                collection.@process.sort = ${q(value).count() > 0 ? q(value).sort('publishDate', 'DESC').get() : value}
             }
-
-
-    newsByCategory = Community.News:AbstractList {
-      collection = ${q(site).find('[instanceof Community.News:News]').filterByReference('categories', node).get()}
-      collection.@process.sort = ${q(value).count() > 0 ? q(value).sort('publishDate', 'DESC').get() : value}
-      itemsPerPage = 5
-    }
-
-   #}
-   # newsdpfCategory = ${q(node).property('title')}
-   newsdpfCategory = ${q(site).find('[instanceof Community.News:News]').filterByReference('categories', node).get()}
-}
-
-# Attach to `PrimaryContent` to render nodes of this type automatically
-prototype(Neos.Neos:PrimaryContent) {
-    category{
-        @position = 'before default'
-        condition = ${q(node).is('[instanceof Community.News:Category]')}
-        type = 'Community.News:Category'
+        }
     }
 }
