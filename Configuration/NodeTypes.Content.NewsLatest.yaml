@@ -1,10 +1,26 @@
 'Community.News:NewsLatest':
   superTypes:
     'Neos.Neos:Content': true
+  constraints:
+    nodeTypes:
+      '*': false
   ui:
     label: 'News latest'
     icon: icon-list
     group: 'news'
-  constraints:
-    nodeTypes:
-      '*': false
+    inspector:
+      groups:
+        news:
+          label: 'News'
+          position: 10
+  properties:
+    category:
+      type: reference
+      ui:
+        label: 'Category'
+        reloadIfChanged: true
+        inspector:
+          group: 'news'
+          position: 5
+          editorOptions:
+            nodeTypes: ['Community.News:Category']
