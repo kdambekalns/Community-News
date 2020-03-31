@@ -1,6 +1,9 @@
 prototype(Community.News:NewsLatest) < prototype(Neos.Neos:ContentComponent) {
+    renderer.@context.category = ${q(node).property('category')}
+
     renderer = Community.News:AbstractList {
         collection = ${q(site).find('[instanceof Community.News:News]').get()}
+        collection.@process.filter = ${category == null ? value : Array.filter(value, node => Array.indexOf(node.properties.categories,category) != -1)}
         collection.@process.sort = ${q(value).count() > 0 ? q(value).sort('publishDate', 'DESC').slice(0, 3).get() : value}
         itemsPerPage = 6
         prototype(Flowpack.Listable:Collection) {
