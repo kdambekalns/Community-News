@@ -1,5 +1,5 @@
-prototype(Community.News:Author) < prototype(Neos.NodeTypes:Page) {
-    body.content.main = Neos.Fusion:Template {
+prototype(Community.News:Author) < prototype(Neos.Neos:Page) {
+    body {
         templatePath = 'resource://Community.News/Private/Templates/NodeTypes/Author.html'
 
         name = ${q(node).property('name')}
