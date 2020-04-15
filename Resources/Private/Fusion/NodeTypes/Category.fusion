@@ -1,5 +1,5 @@
-prototype(Community.News:Category) < prototype(Neos.NodeTypes:Page) {
-    body.content.main = Neos.Fusion:Template {
+prototype(Community.News:Category) < prototype(Neos.Neos:Page) {
+    body {
         templatePath = 'resource://Community.News/Private/Templates/NodeTypes/Category.html'
 
         title = ${q(node).property('title')}
