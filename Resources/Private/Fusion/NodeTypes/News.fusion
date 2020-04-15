@@ -1,5 +1,5 @@
 prototype(Community.News:News) < prototype(Neos.NodeTypes:Page) {
-    body.content.main = Neos.Fusion:Template {
+    body {
         templatePath = 'resource://Community.News/Private/Templates/NodeTypes/News.html'
 
         title = ${q(node).property('title')}
