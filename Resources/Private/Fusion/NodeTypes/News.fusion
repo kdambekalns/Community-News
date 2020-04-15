@@ -1,4 +1,4 @@
-prototype(Community.News:News) < prototype(Neos.NodeTypes:Page) {
+prototype(Community.News:News) < prototype(Neos.Neos:Page) {
     body {
         templatePath = 'resource://Community.News/Private/Templates/NodeTypes/News.html'
 
