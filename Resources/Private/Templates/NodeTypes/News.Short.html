@@ -6,7 +6,14 @@
 
     <!-- News Title -->
     <h4>{title}</h4>
-
+    
+    <!-- preview -->
+    <f:if condition="{previewPicture}">
+        <a href="{media:uri.image(image: previewPicture, maximumWidth:200, maximumHeight:100, allowCropping:FALSE)}">
+            <media:image class="img-fluid" image="{previewPicture}" width="200" height="100" allowUpScaling="TRUE" alt="PreviewBild" />
+        </a>
+    </f:if>
+    
     <!-- Teaser -->
     <h5>{teaser}</h5>
 
