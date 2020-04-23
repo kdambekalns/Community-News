@@ -2,6 +2,12 @@
 {namespace neos=Neos\Neos\ViewHelpers}
 
 <div{attributes -> f:format.raw()}>
+    <!-- preview -->
+    <f:if condition="{previewPicture}">
+        <a href="{media:uri.image(image: previewPicture, maximumWidth:800, maximumHeight:600, allowCropping:FALSE)}">
+            <media:image class="img-fluid" image="{previewPicture}" allowUpScaling="TRUE" alt="PreviewBild" />
+        </a>
+    </f:if>
 
     <!-- Creation Date -->
     <p><f:format.date date="{publishDate}" format="d.m.Y H:i" /></p>
