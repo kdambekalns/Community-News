@@ -7,4 +7,5 @@ prototype(Community.News:News.Short) < prototype(Neos.Neos:Content) {
     title = ${q(node).property('title')}
     teaser = ${q(node).property('teaser')}
     author = ${q(node).property('author')}
+    previewPicture = ${q(node).property('previewPicture')}       
 }
