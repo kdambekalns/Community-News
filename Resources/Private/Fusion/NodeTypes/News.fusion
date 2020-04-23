@@ -6,7 +6,8 @@ prototype(Community.News:News) < prototype(Neos.Neos:Page) {
         publishDate = ${q(node).property('publishDate')}
         teaser = ${q(node).property('teaser')}
         author = ${q(node).property('author')}
-
+        previewPicture = ${q(node).property('previewPicture')}    
+        
         main = Neos.Neos:PrimaryContent {
             nodePath = 'main'
         }
