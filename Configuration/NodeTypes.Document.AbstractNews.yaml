@@ -43,6 +43,17 @@
             format: 'd-m-Y H:i'
       validation:
         Neos.Neos/Validation/DateTimeValidator: {  }
+    previewPicture:
+      type: Neos\Media\Domain\Model\ImageInterface
+      ui:
+        label: Vorschaubild
+        reloadIfChanged: TRUE
+        inspector:
+          group: 'general'
+          position: 0
+          editorOptions:
+            features:
+              resize: TRUE        
     title:
       type: string
       ui:
