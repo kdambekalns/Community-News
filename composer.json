@@ -4,7 +4,7 @@
     "type": "neos-package",
     "require": {
         "neos/neos": "^4.2 || ^5.0",
-        "flowpack/listable": "^3.2"
+        "flowpack/listable": "dev-master"
     },
     "autoload": {
         "psr-4": {
